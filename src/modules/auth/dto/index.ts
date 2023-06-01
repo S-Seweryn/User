@@ -1,0 +1,5 @@
+export { RegisterDto } from './register.dto'
+export { MailLoginDto } from './mail-login.dto'
+export { RefreshTokenDto } from './refresh-token.dto'
+export { RegistrationConfirmDto } from './registration-confirm.dto'
+export { TeacherRegisterDto } from './teacher-register.dto'

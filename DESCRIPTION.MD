@@ -3,7 +3,7 @@
     It is built on microservice architecture and uses the NestJS framework.
     Its main functions are registration, login, user data management.
 
-    Microservice User provides a rich set of functions, such as creating and user profiles,
+    User microservice  provides a rich set of functions, such as creating and user profiles,
     managing personal data such as name, email address and password, and the ability to add 
     profile pictures using AWS S3. In addition, the microservice enables user authentication 
     through an authentication mechanism such as JWT tokens.

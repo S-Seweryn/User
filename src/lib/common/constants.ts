@@ -1,5 +1,6 @@
 export enum UserMicroserviceCommand {
-    GetUsers = 'get-users',
     GetTeachers = 'get-teachers',
-    GetUser = 'get-user'
+    GetUser = 'get-user',
+    GetTeacher = 'get-teacher',
+    GetUsersEmailInfo ='get-users-email-info'
 }

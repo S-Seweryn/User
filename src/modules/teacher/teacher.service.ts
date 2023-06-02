@@ -20,12 +20,21 @@ export class TeacherService {
         })
     }
 
-    getTeacher(teachersUUID: Array<string>) {
+    getTeacher(teacherUUID: string) {
         return this.teacherRepository
             .createQueryBuilder('T')
             .select('T.teacherUUID, U.firstName, U.lastName, T.language, T.description, T.imageKey')
             .innerJoin(UserEntity, 'U', 'U.userUUID = T.teacherUUID')
-            .where('teacherUUID IN (:...teachersUUID)', { teachersUUID })
+            .where('T.teacherUUID = :teacherUUID', { teacherUUID })
+            .getRawOne<GetTeacherDao>()
+    }
+
+    getTeachers(teachersUUID: Array<string>) {
+        return this.teacherRepository
+            .createQueryBuilder('T')
+            .select('T.teacherUUID, U.firstName, U.lastName, T.language, T.description, T.imageKey')
+            .innerJoin(UserEntity, 'U', 'U.userUUID = T.teacherUUID')
+            .where('T.teacherUUID IN (:...teachersUUID)', { teachersUUID })
             .getRawMany<GetTeacherDao>()
     }
 }

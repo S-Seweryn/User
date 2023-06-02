@@ -5,6 +5,7 @@ import { UserEntity } from 'lib/entities'
 import { NewUser } from 'lib/types'
 import { hashPassword, R } from 'lib/utils'
 import { Role } from 'lib/common'
+import { GetUserEmailInfoDao } from './dao'
 
 @Injectable()
 export class UserService {
@@ -71,5 +72,13 @@ export class UserService {
             )
             .then(row => Boolean(row.affected))
             .catch(R.always(false))
+    }
+
+    getUsersEmailInfo(usersUUID: Array<string>) {
+        return this.userRepository
+            .createQueryBuilder('U')
+            .select('U.userUUID, U.firstName, U.lastName, U.email')
+            .where('U.userUUID IN (:...usersUUID)', { usersUUID })
+            .getRawMany<GetUserEmailInfoDao>()
     }
 }

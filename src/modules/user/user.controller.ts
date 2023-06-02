@@ -20,4 +20,9 @@ export class UserController {
     getUser(@Payload() dto: GetUserDto) {
         return this.userService.getUser(dto.userUUID, dto.role)
     }
+
+    @MessagePattern({ cmd: UserMicroserviceCommand.GetUsersEmailInfo })
+    async getUsersEmailInfo(@Payload() usersUUID: Array<string>) {
+        return this.userService.getUsersEmailInfo(usersUUID)
+    }
 }

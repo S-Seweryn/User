@@ -1,9 +1,9 @@
-import { Column, Entity, Index } from 'typeorm'
+import { Column, Entity, Index, PrimaryColumn } from 'typeorm'
 import { DBTypes, Language } from 'lib/types'
 
 @Entity({ name: 'teacher' })
 export class TeacherEntity {
-    @Column({ unique: true })
+    @PrimaryColumn()
     teacherUUID: string
 
     @Index()

@@ -3,7 +3,6 @@ import { DBTypes, Language } from 'lib/types'
 
 @Entity({ name: 'teacher' })
 export class TeacherEntity {
-    @Index()
     @Column({ unique: true })
     teacherUUID: string
 
@@ -14,7 +13,6 @@ export class TeacherEntity {
     })
     language: Language
 
-    @Index()
-    @Column()
+    @Column({ unique: true })
     imageKey: string
 }

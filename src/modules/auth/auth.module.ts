@@ -11,7 +11,7 @@ import { AuthService } from './auth.service'
 import { AuthController } from './auth.controller'
 import { UserModule } from 'modules/user'
 import { JwtStrategy, MailStrategy } from './strategies'
-import { GlobalAuthGuard } from './guards'
+import { GlobalAuthGuard, RolesGuard } from './guards'
 import { TeacherModule } from 'modules/teacher'
 
 @Module({
@@ -39,6 +39,10 @@ import { TeacherModule } from 'modules/teacher'
         {
             provide: APP_GUARD,
             useClass: GlobalAuthGuard
+        },
+        {
+            provide: APP_GUARD,
+            useClass: RolesGuard
         },
         AuthService,
         MailStrategy,
